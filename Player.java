@@ -1,10 +1,7 @@
 
-public class Player {
+public abstract class Player {
 	public int value=0;
-	public boolean move(boolean[][] game, int pos,boolean player)
-	{
-		return true;
-	}
+	public abstract boolean move(boolean[][] game, int pos,boolean player);
 	public void add(int increment)
 	{
 		value=value+increment;
