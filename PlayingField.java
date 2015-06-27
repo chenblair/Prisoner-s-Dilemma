@@ -2,13 +2,13 @@ import java.util.*;
 public class PlayingField {
 
 	private static final int reps=100;
-	private static final int s3=3;
-	private static final int s2=2;
-	private static final int s1=1;
-	private static final int s0=0;
+	private static final int S3=3;
+	private static final int S2=2;
+	private static final int S1=1;
+	private static final int S0=0;
 	private static final int[][][] scoreboard=new int[][][]{
-			{{s1,s1},{s3,s0}},
-			{{s0,s3},{s2,s2}}
+			{{S1,S1},{S3,S0}},
+			{{S0,S3},{S2,S2}}
 	};
 	private static boolean[][] record=new boolean[2][100];
 	public static void main(String[] args){
