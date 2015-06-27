@@ -2,12 +2,12 @@ package nicholasversion;
 
 import java.util.ArrayList;
 
-public class PlayerField {
+public class Game {
 	public ArrayList<Player> pal;
 	public final int BOTHCOOP=2,LOSE=0,WIN=3,BOTHDEFECT=1;
 	public int playerType1,playerType2;
 
-	public PlayerField(int playerType1, int playerType2) {
+	public Game(int playerType1, int playerType2) {
 		
 		pal = new ArrayList<Player>();
 		
@@ -19,13 +19,12 @@ public class PlayerField {
 	}
 
 	public void loopAndPrint() {
-		System.out.printf("Game between %d and %d:\n",playerType1,playerType2);
+		System.out.printf("Game between %s and %s:\n",pal.get(0).getTYPENAME(),pal.get(1).getTYPENAME());
 		for (int i = 0; i < 100; i++) {
 			interact(pal.get(0), pal.get(1));
 		}
-		for (Player p : pal) {
-			p.printScore();
-		}
+		pal.get(0).printScore();
+		pal.get(1).printScore();
 	}
 
 	public void interact(Player p1, Player p2) {
@@ -65,12 +64,12 @@ public class PlayerField {
 
 	public static void main(String[] args) {
 		int amtOfPlayerTypes=4;
-		ArrayList<PlayerField> pfal=new ArrayList<PlayerField>();
+		ArrayList<Game> gameAL=new ArrayList<Game>();
 		for(int i=0;i<amtOfPlayerTypes;i++){
-			for(int j=0;j<=i;i++){
-				PlayerField pf=new PlayerField(i,j);
-				pf.loopAndPrint();
-				pfal.add(pf);
+			for(int j=0;j<=i;j++){
+				Game game=new Game(i,j);
+				game.loopAndPrint();
+				gameAL.add(game);
 				
 			}
 		}

@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 public class Player {
 	
-	public int playerType;
-	public int score;
-	public int round;
+	private int playerType;
+	private int score;
+	private int round;
 	public ArrayList<boolean[]> recordKeeper;
 	
 	private final int THISPLAYER=0,OPPONENT=1;
+	
+	private final String[] TYPENAMES={"Angel","Devil","TTCoop","TTDefect"};
 	
 	public Player(int playerType){
 		this.playerType=playerType;
@@ -18,6 +20,9 @@ public class Player {
 		recordKeeper=new ArrayList<boolean[]>();
 	}
 
+	public String getTYPENAME(){
+		return TYPENAMES[playerType];
+	}
 	
 	public boolean play(){
 		boolean retBool=false;
@@ -72,7 +77,7 @@ public class Player {
 	}
 	
 	public void printScore(){
-		System.out.printf("Player %d type Score: %d\n",playerType, score);
+		System.out.printf("Player type %s Score: %d\n",getTYPENAME(), score);
 	}
 	
 }
