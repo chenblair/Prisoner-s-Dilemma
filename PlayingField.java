@@ -2,6 +2,7 @@ import java.util.*;
 public class PlayingField {
 
 	private static final int reps=100;
+	private static final int reps2=100;
 	private static final int s3=3;
 	private static final int s2=2;
 	private static final int s1=1;
@@ -12,23 +13,27 @@ public class PlayingField {
 	};
 	private static boolean[][] record=new boolean[2][100];
 	public static void main(String[] args){
+		Player[] playersE={new Angel(),new Demon(),new TiTa(),new TiTa2(),new MassRet()};
 		ArrayList<Player> players=new ArrayList<Player>();
-		players.add(new Angel());
-		players.add(new Demon());
-		players.add(new TiTa());
-		players.add(new TiTa2());
-		players.add(new MassRet());
-		for(Player a:players)
+		for (Player p:playersE)
 		{
-			for(Player b:players)
+			players.add(p);
+		}
+		for (int i=0;i<reps2;i++)
+		{
+			for(Player a:players)
 			{
-				interaction(a,b);
+				for(Player b:players)
+				{
+					interaction(a,b);
+				}
+			}
+			for (Player p:players)
+			{
+				System.out.println(p.getName()+" : "+count(p,players));
 			}
 		}
-		for (Player p:players)
-		{
-			System.out.println(p.getName()+" : "+p.getValue());
-		}
+		
 	}
 	public static void interaction(Player a,Player b)
 	{
@@ -39,6 +44,18 @@ public class PlayingField {
 			a.add(scoreboard[(record[0][i])?1:0][(record[1][i])?1:0][0]);
 			b.add(scoreboard[(record[0][i])?1:0][(record[1][i])?1:0][1]);
 		}
+	}
+	public static int count(Player p,ArrayList<Player> players)
+	{
+		int ttl=0;
+		for (Player a:players)
+		{
+			if (a.getName().equals(p.getName()))
+			{
+				ttl++;
+			}
+		}
+		return ttl;
 	}
 
 }
