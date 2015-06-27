@@ -1,5 +1,8 @@
 
 public class MassRet extends Player {
+	/*
+	 * keeps cooperating until opponent defects, then keeps defecting
+	 */
 	public boolean move(boolean[][] game, int pos,boolean player)
 	{
 		if (pos==0)
