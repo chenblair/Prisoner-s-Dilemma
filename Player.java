@@ -10,10 +10,7 @@ public abstract class Player {
 	{
 		return value;
 	}
-	public String getName()
-	{
-		return "Player";
-	}
+	public abstract String getName();
 	public void zero()
 	{
 		value=0;
