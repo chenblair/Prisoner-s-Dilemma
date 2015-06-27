@@ -1,5 +1,6 @@
 
-public abstract class Player {
+public abstract class Player
+{
 	public int value=0;
 	public abstract boolean move(boolean[][] game, int pos,boolean player);
 	public void add(int increment)

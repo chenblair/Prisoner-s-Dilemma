@@ -12,12 +12,12 @@ public class PlayingField {
 	};
 	private static boolean[][] record=new boolean[2][100];
 	public static void main(String[] args){
+		Player[] playerE={new Angel(), new  Demon(),new TiTa(),new TiTa2(),new MassRet()};
 		ArrayList<Player> players=new ArrayList<Player>();
-		players.add(new Angel());
-		players.add(new Demon());
-		players.add(new TiTa());
-		players.add(new TiTa2());
-		players.add(new MassRet());
+		for (Player p:playerE)
+		{
+			players.add(p);
+		}
 		for(Player a:players)
 		{
 			for(Player b:players)
@@ -40,5 +40,4 @@ public class PlayingField {
 			b.add(scoreboard[(record[0][i])?1:0][(record[1][i])?1:0][1]);
 		}
 	}
-
 }
