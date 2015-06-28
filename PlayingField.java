@@ -12,7 +12,7 @@ public class PlayingField {
 	};
 	private static boolean[][] record=new boolean[2][100];
 	public static void main(String[] args){
-		Player[] playerE={new Angel(), new  Demon(),new TiTa(),new TiTa2(),new MassRet()};
+		Player[] playerE={new Angel(), new  Demon(),new TiTa(),new TiTa2(),new MassRet(), new Pavlov()};
 		ArrayList<Player> players=new ArrayList<Player>();
 		for (Player p:playerE)
 		{
