@@ -16,7 +16,7 @@ public abstract class Player
 	{
 		return ttlValue;
 	}
-	public void empty(int m)
+	public void empty(long m)
 	{
 		ttlValue+=m*value;
 		zero();

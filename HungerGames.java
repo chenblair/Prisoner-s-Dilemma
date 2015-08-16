@@ -1,7 +1,8 @@
-
+import java.io.*;
 public class HungerGames {
 	private static final int reps=100;
 	private static final int reps2=100;
+	private static final int percent=200;
 	private static final int S3=3;
 	private static final int S2=2;
 	private static final int S1=1;
@@ -13,9 +14,16 @@ public class HungerGames {
 	private static boolean[][] record=new boolean[2][100];
 	private static Player[] playerE={new Angel(), new  Demon(),new TiTa(),new TiTa2(),
 				new MassRet(), new Pavlov(), new Random()};
-	private static int[] playerS=new int[playerE.length];
+	private static long[] playerS=new long[playerE.length];
 
 	public static void main(String[] args) {
+		File file = new File("HungerGames.txt");
+		try {
+		FileOutputStream fis = new FileOutputStream(file);
+		PrintStream out = new PrintStream(fis);
+		System.setOut(out);
+		} catch (Exception e) {}
+		
 		for (int i=0;i<playerS.length;i++)
 			playerS[i]=1;
 		for (int k=0;k<reps2;k++)
@@ -26,6 +34,11 @@ public class HungerGames {
 				for(int j=0;j<playerE.length;j++)
 				{
 					interaction(playerE[i],playerE[j]);
+					if (i==j)
+					{
+						playerE[i].empty(playerS[i]*playerS[j]-playerS[i]);
+						playerE[j].empty(playerS[i]*playerS[j]-playerS[i]);
+					}
 					playerE[i].empty(playerS[i]*playerS[j]);
 					playerE[j].empty(playerS[i]*playerS[j]);
 				}
@@ -39,13 +52,16 @@ public class HungerGames {
 	}
 	public static void adjust()
 	{
+		
 		int ttl=0;
 		for (int i=0;i<playerS.length;i++)
 			ttl+=playerS[i];
 		for (int i=0;i<playerS.length;i++)
-			playerS[i]=(playerS[i]*100)/ttl;
+			playerS[i]=(playerS[i]*percent)/ttl;
 		for (int i=0;i<playerS.length;i++)
-			System.out.print(playerS[i]+" ");
+		{
+			System.out.print(playerS[i]+"\t");
+		}
 		System.out.println();
 	}
 	public static void interaction(Player a,Player b)
